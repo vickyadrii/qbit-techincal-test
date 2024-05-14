@@ -1,10 +1,14 @@
-import { Button } from "@/components/ui/button";
+import Home from "@/features/home/Home";
+import { useEffect } from "react";
 
 const HomePage = () => {
+  useEffect(() => {
+    document.title = "Home Page | QBIT Technical Test";
+  });
+
   return (
     <div>
-      <p>HomePage</p>
-      <Button>Klik disini</Button>
+      <Home />
     </div>
   );
 };
