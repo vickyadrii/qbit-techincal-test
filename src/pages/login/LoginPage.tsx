@@ -1,9 +1,13 @@
+import { useEffect } from "react";
+
+import LoginForm from "@/features/login/LoginForm";
+
 const LoginPage = () => {
-  return (
-    <div>
-      <p>LoginPage</p>
-    </div>
-  );
+  useEffect(() => {
+    document.title = "Login Page | QBIT Technical Test";
+  }, []);
+
+  return <LoginForm />;
 };
 
 export default LoginPage;
