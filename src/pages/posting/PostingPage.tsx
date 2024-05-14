@@ -16,7 +16,8 @@ const PostingPage = () => {
   const { username } = userData;
 
   useEffect(() => {
-    document.title = 'Posting Page | QBIT Technical Test'
+    document.title = "Posting Page | QBIT Technical Test";
+
     const userDataString = localStorage.getItem("user_data");
     if (userDataString) {
       const data = JSON.parse(userDataString);

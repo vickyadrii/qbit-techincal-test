@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState<PostData[]>([]);
+  const [isLogged, setIsLogged] = useState<boolean>(false);
 
   useEffect(() => {
     const list = localStorage.getItem("posts");
@@ -22,6 +23,15 @@ const Home = () => {
   const handleOnNavigate = (href: string) => {
     navigate(href);
   };
+
+  useEffect(() => {
+    const userDataString = localStorage.getItem("user_data");
+    if (userDataString) {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+    }
+  }, [navigate]);
 
   return (
     <div className="flex flex-col items-end gap-5">
@@ -47,7 +57,12 @@ const Home = () => {
       </div>
 
       <div className="flex gap-4">
-        <Button onClick={() => handleOnNavigate("/posting")}>Post something</Button>
+        {isLogged ? (
+          <Button onClick={() => handleOnNavigate("/posting")}>Post something</Button>
+        ) : (
+          <Button onClick={() => handleOnNavigate("/login")}>Login</Button>
+        )}
+
         <Button variant="outline" onClick={() => handleOnNavigate("/about")}>
           About Me
         </Button>
