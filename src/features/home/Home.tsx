@@ -36,9 +36,7 @@ const Home = () => {
   return (
     <div className="flex flex-col gap-5">
       <div className="bg-white p-10 space-y-6 shadow-md rounded-md max-h-[85vh] overflow-y-auto">
-        <div className="">
-          <h2 className="text-2xl text-center font-semibold">All Posts</h2>
-        </div>
+        <h2 className="text-2xl text-center font-semibold">All Posts</h2>
         <div className="grid grid-cols-3 gap-5">
           {filteredPosts.map(({ title, content }, index) => (
             <Card>

@@ -1,9 +1,12 @@
+import { useEffect } from "react";
+import About from "@/features/about/About";
+
 const AboutPage = () => {
-  return (
-    <div>
-      <p>AboutPage</p>
-    </div>
-  );
+  useEffect(() => {
+    document.title = "About Page | QBIT Technical Test";
+  }, []);
+
+  return <About />;
 };
 
 export default AboutPage;
