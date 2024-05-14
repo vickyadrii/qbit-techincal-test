@@ -37,7 +37,7 @@ const ListPosts = ({ posts, handlePublishedPost }: listPostsProps) => {
           </Card>
         ))
       ) : (
-        <p>No data</p>
+        <p className="font-semibold">No data</p>
       )}
     </div>
   );
