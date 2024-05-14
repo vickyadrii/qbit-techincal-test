@@ -38,19 +38,23 @@ const Home = () => {
       <div className="bg-white p-10 space-y-6 shadow-md rounded-md max-h-[85vh] overflow-y-auto">
         <h2 className="text-2xl text-center font-semibold">All Posts</h2>
         <div className="grid grid-cols-3 gap-5">
-          {filteredPosts.map(({ title, content }, index) => (
-            <Card>
-              <CardHeader>
-                <CardTitle>{title}</CardTitle>
-              </CardHeader>
-              <CardContent className="overflow-x-auto max-h-60">
-                <p className="text-sm text-slate-800 leading-6">{content}</p>
-              </CardContent>
-              <CardFooter>
-                <span className="mt-4 text-slate-500 text-sm font-medium">#{index + 1}</span>
-              </CardFooter>
-            </Card>
-          ))}
+          {filteredPosts.length !== 0 ? (
+            filteredPosts.map(({ title, content }, index) => (
+              <Card>
+                <CardHeader>
+                  <CardTitle>{title}</CardTitle>
+                </CardHeader>
+                <CardContent className="overflow-x-auto max-h-60">
+                  <p className="text-sm text-slate-800 leading-6">{content}</p>
+                </CardContent>
+                <CardFooter>
+                  <span className="mt-4 text-slate-500 text-sm font-medium">#{index + 1}</span>
+                </CardFooter>
+              </Card>
+            ))
+          ) : (
+            <p className="font-semibold">No data</p>
+          )}
         </div>
       </div>
 
