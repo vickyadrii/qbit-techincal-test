@@ -33,7 +33,7 @@ const LoginForm = () => {
 
   return (
     <div className="max-w-2xl m-auto p-5 flex justify-center items-center h-screen">
-      <div className="bg-white p-20 w-full rounded-md">
+      <div className="bg-white p-20 w-full rounded-md shadow">
         <div className="flex flex-col gap-6">
           <h2 className="text-center text-2xl font-semibold">QBIT Technical Test</h2>
           <Form {...form}>
