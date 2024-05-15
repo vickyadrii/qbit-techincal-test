@@ -1,4 +1,5 @@
-# QBIT Technical Test 
+# <div align="center">QBIT Technical Test</div>
 
-## Technologies used: React, Vite, Typescript, Tailwind, and Shadcn UI
+## Technologies used:
+[![My Skills](https://skillicons.dev/icons?i=react,ts,vite,redux,tailwind)](https://skillicons.dev)
 
