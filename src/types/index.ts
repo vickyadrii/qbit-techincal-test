@@ -13,3 +13,8 @@ export type PostData = {
   content?: string;
   posting?: string;
 };
+
+export type LoginContext = {
+  username?: string;
+  isAuthenticated?: boolean;
+};

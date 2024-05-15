@@ -4,19 +4,15 @@ import { PostData } from "@/types";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IRootState } from "@/store";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [posts, setPosts] = useState<PostData[]>([]);
-  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const loginContext = useSelector((state: IRootState) => state.auth);
+  const { isAuthenticated = false } = loginContext;
 
-  useEffect(() => {
-    const list = localStorage.getItem("posts");
-    const parsedlist = list ? JSON.parse(list) : [];
-    if (parsedlist.length !== 0) {
-      setPosts(parsedlist);
-    }
-  }, []);
+  const [posts, setPosts] = useState<PostData[]>([]);
 
   const filteredPosts = posts.filter((data) => data.posting === "1");
 
@@ -25,13 +21,12 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const userDataString = localStorage.getItem("user_data");
-    if (userDataString) {
-      setIsLogged(true);
-    } else {
-      setIsLogged(false);
+    const list = localStorage.getItem("posts");
+    const parsedlist = list ? JSON.parse(list) : [];
+    if (parsedlist.length !== 0) {
+      setPosts(parsedlist);
     }
-  }, [navigate]);
+  }, []);
 
   return (
     <div className="flex flex-col gap-5">
@@ -59,7 +54,7 @@ const Home = () => {
       </div>
 
       <div className="flex gap-4 justify-end">
-        {isLogged ? (
+        {isAuthenticated ? (
           <Button onClick={() => handleOnNavigate("/posting")}>Post something</Button>
         ) : (
           <Button onClick={() => handleOnNavigate("/login")}>Login</Button>

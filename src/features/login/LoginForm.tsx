@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "@/store/auth";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -16,6 +18,7 @@ const formSchema = z.object({
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -26,7 +29,7 @@ const LoginForm = () => {
   });
 
   const handleOnSubmit = (values: z.infer<typeof formSchema>) => {
-    localStorage.setItem("user_data", JSON.stringify(values));
+    dispatch(authActions.login(values.username));
 
     navigate("/", { replace: true });
   };
